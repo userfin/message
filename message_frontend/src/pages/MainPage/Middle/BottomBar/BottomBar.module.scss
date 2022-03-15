@@ -1,0 +1,14 @@
+.botInput {
+    border: none;
+    background-color: #EFF5F5;
+    color: #919CAA;
+    border-radius: 13px;
+    height: 50px;
+    font-size: 17px;
+    padding: 0 20px;
+    &:hover, &:active, &:focus-visible {
+        border: none;
+        box-shadow: none;
+        outline: none;
+    }
+}
