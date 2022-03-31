@@ -28,7 +28,7 @@ export const FileCard = ({
         <p className='m-0'>{date}</p>
       </div>
       <div className="flex-grow-0 flex-shrink-1">
-        <h6>{size}</h6>
+        <h6>{Math.round(size/1024/1024*100)/100} Mb</h6>
       </div>
     </Button>
   );

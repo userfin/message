@@ -4,10 +4,14 @@ import { Button } from '../Button';
 import styles from './MessageCard.module.scss';
 
 export const MessageCard = ({
-  time, img, text, name, unread
+  time, img, text, name, unread, onClick
 }) => {
   return (
-    <Button className={`d-flex p-3 m-auto ${styles.card}`} style={{maxWidth: '300px'}}>
+    <Button 
+      className={`d-flex p-3 m-auto ${styles.card}`} 
+      style={{maxWidth: '300px'}}
+      onClick={onClick}
+    >
       <div className="flex-grow-0 flex-shrink-1">
         <RoundImage size='sm' src={img}/>
       </div>

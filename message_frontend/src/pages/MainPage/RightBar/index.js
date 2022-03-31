@@ -1,22 +1,26 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Divider } from '../../../components/Divider';
 import { FileCard } from '../../../components/FileCard';
 import { ProfileCard } from '../../../components/ProfileCard';
 
-const bio = [
-  { header: 'Phone', text: '+777777777' },
-  { header: 'Bio', text: 'Very funny and gay person' },
-  { header: 'Gender', text: 'Gay' },
-];
-
 export const RightBar = () => {
+  const companion = useSelector((state) => state.dialog.companion);
+  const files = useSelector((state) => state.dialog.files);
+  console.log(files);
+  const bio = [
+    { header: 'Phone', text: companion.phone },
+    { header: 'Bio', text: companion.bio },
+  ];
+
+  console.log(companion);
   return (
     <div className='h-100 py-5'>
       <ProfileCard 
         isOnline 
-        img="/assets/eating.png"
-        name="Abobo Gaspar"
-        userTag="@3 суса"
+        img={companion?.image?.src}
+        name={companion.name} 
+        userTag={companion.tag}
       />
 
       <Divider maxWidth={'278px'}/>
@@ -36,10 +40,11 @@ export const RightBar = () => {
         <h2>Files</h2>
         <p className='my-auto'>Veiw all</p>
       </div>
-      <FileCard name='Sus' date='today' size='666'/>
-      <FileCard name='Sus' date='today' size='666'/>
-      <FileCard name='Sus' date='today' size='666'/>
-      <FileCard name='Sus' date='today' size='666'/>
+      {files.map(file =>
+        file.file
+          ?<FileCard name={file.file.fileName} date={file.file.creatingDate} size={file.file.size}/>
+          :<FileCard name={file.image.fileName} date={file.image.creatingDate} size={file.image.size}/>
+      )} 
     </div>
   );
 };
